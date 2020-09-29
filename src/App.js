@@ -14,6 +14,7 @@ class App extends React.Component {
       clickedY: 0,
       renderTarget: false,
       clickCounter: 0,
+      started: false,
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -38,9 +39,18 @@ class App extends React.Component {
   }
 
   handleStartClick(event) {
-    this.setState({
-      renderTarget: !this.state.renderTarget,
-    });
+    if (!this.state.started) {
+      this.setState({ started: !this.state.started }, () => {
+        this.test = setInterval(() => {
+          this.setState({
+            renderTarget: !this.state.renderTarget,
+          });
+        }, 1000);
+      });
+    } else {
+      this.setState({ started: false }, this.setState({ renderTarget: false }));
+      clearInterval(this.test);
+    }
   }
 
   render() {
@@ -50,7 +60,10 @@ class App extends React.Component {
         onMouseMove={this.handleMouseMovement}
         onClick={this.handleMouseClick}
       >
-        <button onClick={this.handleStartClick}>Start!</button>
+        <button onClick={this.handleStartClick}>
+          {this.state.started ? "Stop!" : "Start!"}
+        </button>
+
         <p>
           The current mouse position is ({this.state.x}, {this.state.y})
         </p>
@@ -59,7 +72,7 @@ class App extends React.Component {
           ClickPositionY={this.state.clickedY}
           ClickCount={this.state.clickCounter}
         />
-        {/* <CircleTarget /> */}
+        <CircleTarget renderTarget={this.state.renderTarget} />
       </div>
     );
   }
