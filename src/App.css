@@ -4,8 +4,14 @@ body > #root > div {
 }
 
 .circleTarget {
-  height: 150px;
-  width: 150px;
   background-color: blue;
   border-radius: 50%;
+  position: absolute;
+}
+
+.squareTarget {
+  background-color: red;
+  color: blue;
+
+  position: absolute;
 }
