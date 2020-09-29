@@ -2,3 +2,10 @@ body > #root > div {
   height: 100vh;
   text-align: center;
 }
+
+.circleTarget {
+  height: 150px;
+  width: 150px;
+  background-color: blue;
+  border-radius: 50%;
+}
