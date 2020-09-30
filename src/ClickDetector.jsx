@@ -10,6 +10,7 @@ export default function ClickDetector(props) {
         Score: {props.Score} / {props.totalRenders} (clicked / total)
       </div>
       <div>Accuracy: {percentage}%</div>
+      <div> Rounds: {props.rounds}</div>
     </div>
   );
 }

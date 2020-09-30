@@ -24,6 +24,7 @@ class App extends React.Component {
       interval: 700,
       renderModal: false,
       color: "purple",
+      rounds: 5,
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -35,6 +36,8 @@ class App extends React.Component {
     this.changeTargetColor = this.changeTargetColor.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
     this.closeSettings = this.closeSettings.bind(this);
+    this.handleRoundChange = this.handleRoundChange.bind(this);
+    this.endGame = this.endGame.bind(this);
   }
 
   handleMouseMovement(event) {
@@ -42,6 +45,19 @@ class App extends React.Component {
       currentMouseX: event.clientX,
       currentMouseY: event.clientY,
     });
+  }
+
+  endGame() {
+    this.setState({
+      started: false,
+      clickCounter: 0,
+      renderTarget: false,
+      score: 0,
+      totalRenders: 0,
+    });
+    //clear target rendering interval
+    clearInterval(this.targetRenderer);
+    console.log("your score is " + this.state.score);
   }
 
   handleMouseClick(event) {
@@ -92,11 +108,13 @@ class App extends React.Component {
       this.setState(
         {
           started: !this.state.started,
+          clickCounter: 0,
+          score: 0,
+          totalRenders: 0,
         },
         () => {
           this.closeSettings();
-          console.log(this.state.clickCounter);
-          this.test = setInterval(() => {
+          this.targetRenderer = setInterval(() => {
             this.changeTargetPosition();
             this.setState(
               {
@@ -108,21 +126,21 @@ class App extends React.Component {
                     totalRenders: this.state.totalRenders + 1,
                   });
                 }
+                if (this.state.totalRenders >= this.state.rounds) {
+                  this.setState({
+                    started: false,
+                    renderTarget: false,
+                  });
+                  //clear target rendering interval
+                  clearInterval(this.targetRenderer);
+                }
               }
             );
           }, this.state.interval);
         }
       );
     } else {
-      this.setState({
-        started: false,
-        clickCounter: 0,
-        renderTarget: false,
-        score: 0,
-        totalRenders: 0,
-      });
-      clearInterval(this.test);
-      console.log("your score is " + this.state.score);
+      this.endGame();
     }
   }
 
@@ -161,6 +179,12 @@ class App extends React.Component {
         interval: 450,
       });
     }
+  }
+
+  handleRoundChange(event) {
+    let rounds = parseInt(event.target.id);
+    console.log(rounds);
+    this.setState({ rounds: rounds });
   }
 
   handleSquareTargetClick() {
@@ -225,6 +249,7 @@ class App extends React.Component {
           {this.state.currentMouseY})
         </p>
         <ClickDetector
+          rounds={this.state.rounds}
           ClickPositionX={this.state.clickedX}
           ClickPositionY={this.state.clickedY}
           ClickCount={this.state.clickCounter}
@@ -250,6 +275,7 @@ class App extends React.Component {
             changeTargetColor={this.changeTargetColor}
             color={this.state.color}
             handleDifficultyChange={this.handleDifficultyChange}
+            handleRoundChange={this.handleRoundChange}
           />
         ) : null}
       </div>

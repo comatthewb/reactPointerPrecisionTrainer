@@ -9,6 +9,19 @@ export default function SettingsModal(props) {
         </span>
       </div>
       <div className="modal-body">
+        <p>Number of Rounds: </p>
+        <button onClick={props.handleRoundChange} id="25">
+          25
+        </button>
+        <button onClick={props.handleRoundChange} id="50">
+          50
+        </button>
+        <button onClick={props.handleRoundChange} id="100">
+          100
+        </button>
+        <button onClick={props.handleRoundChange} id="200">
+          200
+        </button>
         <p>Difficulty: </p>
         <button onClick={props.handleDifficultyChange} id="easy">
           easy
