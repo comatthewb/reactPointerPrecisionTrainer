@@ -22,6 +22,7 @@ class App extends React.Component {
       score: 0,
       totalRenders: 0,
       renderModal: false,
+      color: "purple",
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -30,6 +31,7 @@ class App extends React.Component {
     this.handleCircleTargetClick = this.handleCircleTargetClick.bind(this);
     this.handleSquareTargetClick = this.handleSquareTargetClick.bind(this);
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
+    this.changeTargetColor = this.changeTargetColor.bind(this);
   }
 
   handleMouseMovement(event) {
@@ -43,14 +45,11 @@ class App extends React.Component {
     let count = this.state.clickCounter;
     count++;
     if (this.state.started === true) {
-      this.setState(
-        {
-          clickedX: this.state.currentMouseX,
-          clickedY: this.state.currentMouseY,
-          clickCounter: count,
-        },
-        console.log("firing")
-      );
+      this.setState({
+        clickedX: this.state.currentMouseX,
+        clickedY: this.state.currentMouseY,
+        clickCounter: count,
+      });
     } else {
       this.setState({
         clickedX: this.state.currentMouseX,
@@ -58,6 +57,14 @@ class App extends React.Component {
         clickCounter: 0,
       });
     }
+  }
+
+  changeTargetColor(event) {
+    let color = event.target.id;
+    console.log(event.target.id);
+    this.setState({
+      color: color,
+    });
   }
 
   changeTargetPosition() {
@@ -200,9 +207,13 @@ class App extends React.Component {
           renderTarget={this.state.renderTarget}
           targetWorH={this.state.targetWorH}
           targetPosition={this.state.targetPosition}
+          color={this.state.color}
         />
         {this.state.renderModal ? (
-          <SettingsModal handleSettingsClick={this.handleSettingsClick} />
+          <SettingsModal
+            handleSettingsClick={this.handleSettingsClick}
+            changeTargetColor={this.changeTargetColor}
+          />
         ) : null}
       </div>
     );

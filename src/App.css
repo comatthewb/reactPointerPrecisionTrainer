@@ -9,9 +9,7 @@ body > #root > div {
   position: absolute;
 }
 
-.squareTarget {
-  background-color: red;
-  color: blue;
+[class^="squareTarget-"] {
   position: absolute;
 }
 
