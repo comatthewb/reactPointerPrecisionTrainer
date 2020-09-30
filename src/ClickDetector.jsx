@@ -6,7 +6,9 @@ export default function ClickDetector(props) {
   return (
     <div className="ClickDetector">
       Last Clicked X: {props.ClickPositionX} Y: {props.ClickPositionY}
-      <div>Score: {props.Score}</div>
+      <div>
+        Score: {props.Score} / {props.totalRenders} (clicked / total)
+      </div>
       <div>Accuracy: {percentage}%</div>
     </div>
   );

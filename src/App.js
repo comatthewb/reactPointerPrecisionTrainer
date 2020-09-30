@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import CircleTarget from "./CircleTarget";
 import ClickDetector from "./ClickDetector";
+import SettingsModal from "./SettingsModal";
 import SquareTarget from "./SquareTarget";
 
 class App extends React.Component {
@@ -13,12 +14,13 @@ class App extends React.Component {
       currentMouseY: 0,
       clickedX: 0,
       clickedY: 0,
-      renderTarget: true,
+      renderTarget: false,
       clickCounter: 0,
       started: false,
       targetWorH: 50,
-      targetPosition: [0, 0],
+      targetPosition: [150, 150],
       score: 0,
+      totalRenders: 0,
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -38,11 +40,22 @@ class App extends React.Component {
   handleMouseClick(event) {
     let count = this.state.clickCounter;
     count++;
-    this.setState({
-      clickedX: this.state.currentMouseX,
-      clickedY: this.state.currentMouseY,
-      clickCounter: count,
-    });
+    if (this.state.started === true) {
+      this.setState(
+        {
+          clickedX: this.state.currentMouseX,
+          clickedY: this.state.currentMouseY,
+          clickCounter: count,
+        },
+        console.log("firing")
+      );
+    } else {
+      this.setState({
+        clickedX: this.state.currentMouseX,
+        clickedY: this.state.currentMouseY,
+        clickCounter: 0,
+      });
+    }
   }
 
   changeTargetPosition() {
@@ -52,10 +65,10 @@ class App extends React.Component {
         maxW = window.innerWidth;
 
       position[0] =
-        Math.floor(Math.random() * (maxH - this.state.targetWorH / 2)) +
+        Math.floor(Math.random() * (maxH - this.state.targetWorH)) +
         this.state.targetWorH;
       position[1] =
-        Math.floor(Math.random() * (maxW - this.state.targetWorH / 2)) +
+        Math.floor(Math.random() * (maxW - this.state.targetWorH)) +
         this.state.targetWorH;
       console.log(position);
       this.setState({ targetPosition: position });
@@ -67,23 +80,36 @@ class App extends React.Component {
       this.setState(
         {
           started: !this.state.started,
-          clickCounter: this.state.clickCounter--,
         },
         () => {
+          console.log(this.state.clickCounter);
           this.test = setInterval(() => {
             this.changeTargetPosition();
-            this.setState({
-              renderTarget: !this.state.renderTarget,
-            });
+            this.setState(
+              {
+                renderTarget: !this.state.renderTarget,
+              },
+              () => {
+                if (this.state.renderTarget) {
+                  this.setState({
+                    totalRenders: this.state.totalRenders + 1,
+                  });
+                }
+              }
+            );
           }, 1000);
         }
       );
     } else {
-      this.setState(
-        { started: false, clickCounter: this.state.clickCounter - 1 },
-        this.setState({ renderTarget: false })
-      );
+      this.setState({
+        started: false,
+        clickCounter: 0,
+        renderTarget: false,
+        score: 0,
+        totalRenders: 0,
+      });
       clearInterval(this.test);
+      console.log("your score is " + this.state.score);
     }
   }
 
@@ -144,7 +170,7 @@ class App extends React.Component {
         <button onClick={this.handleStartClick}>
           {this.state.started ? "Stop!" : "Start!"}
         </button>
-
+        <button> settings</button>
         <p>
           The current mouse position is ({this.state.currentMouseX},
           {this.state.currentMouseY})
@@ -153,6 +179,7 @@ class App extends React.Component {
           ClickPositionX={this.state.clickedX}
           ClickPositionY={this.state.clickedY}
           ClickCount={this.state.clickCounter}
+          totalRenders={this.state.totalRenders}
           Score={this.state.score}
         />
         {/* <CircleTarget
@@ -166,6 +193,7 @@ class App extends React.Component {
           targetWorH={this.state.targetWorH}
           targetPosition={this.state.targetPosition}
         />
+        {/* <SettingsModal /> */}
       </div>
     );
   }
