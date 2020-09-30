@@ -21,6 +21,7 @@ class App extends React.Component {
       targetPosition: [150, 150],
       score: 0,
       totalRenders: 0,
+      interval: 1000,
       renderModal: false,
       color: "purple",
     };
@@ -32,6 +33,7 @@ class App extends React.Component {
     this.handleSquareTargetClick = this.handleSquareTargetClick.bind(this);
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
     this.changeTargetColor = this.changeTargetColor.bind(this);
+    this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
   }
 
   handleMouseMovement(event) {
@@ -61,7 +63,7 @@ class App extends React.Component {
 
   changeTargetColor(event) {
     let color = event.target.id;
-    console.log(event.target.id);
+
     this.setState({
       color: color,
     });
@@ -106,7 +108,7 @@ class App extends React.Component {
                 }
               }
             );
-          }, 1000);
+          }, this.state.interval);
         }
       );
     } else {
@@ -128,8 +130,30 @@ class App extends React.Component {
     });
   }
 
+  handleDifficultyChange(event) {
+    if (event.target.id === "easy") {
+      this.setState({
+        interval: 1500,
+      });
+    }
+    if (event.target.id === "medium") {
+      this.setState({
+        interval: 750,
+      });
+    }
+    if (event.target.id === "hard") {
+      this.setState({
+        interval: 500,
+      });
+    }
+    if (event.target.id === "ruthless") {
+      this.setState({
+        interval: 250,
+      });
+    }
+  }
+
   handleSquareTargetClick() {
-    console.log("square clicked");
     let score = this.state.score;
     score++;
     this.setState({ score: score }, () => {
@@ -213,6 +237,8 @@ class App extends React.Component {
           <SettingsModal
             handleSettingsClick={this.handleSettingsClick}
             changeTargetColor={this.changeTargetColor}
+            color={this.state.color}
+            handleDifficultyChange={this.handleDifficultyChange}
           />
         ) : null}
       </div>

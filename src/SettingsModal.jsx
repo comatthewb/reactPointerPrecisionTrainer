@@ -7,33 +7,78 @@ export default function SettingsModal(props) {
         <span className="close" onClick={props.handleSettingsClick}>
           &times;
         </span>
-        <h2>Trainer Settings</h2>
       </div>
       <div className="modal-body">
         <p>Difficulty: </p>
-        <p>In Progress</p>
-        <button onClick={props.changeTargetColor} id="red">
+        <button onClick={props.handleDifficultyChange} id="easy">
+          easy
+        </button>
+        <button onClick={props.handleDifficultyChange} id="medium">
+          medium
+        </button>
+        <button onClick={props.handleDifficultyChange} id="hard">
+          hard
+        </button>
+        <button onClick={props.handleDifficultyChange} id="ruthless">
+          ruthless
+        </button>
+
+        <p>Color: </p>
+
+        <button
+          style={{ backgroundColor: "red", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="red"
+        >
           Red
         </button>
-        <button onClick={props.changeTargetColor} id="orange">
+        <button
+          style={{ backgroundColor: "orange", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="orange"
+        >
           Orange
         </button>
-        <button onClick={props.changeTargetColor} id="yellow">
+        <button
+          style={{ backgroundColor: "yellow", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="yellow"
+        >
           Yellow
         </button>
-        <button onClick={props.changeTargetColor} id="green">
+        <button
+          style={{ backgroundColor: "green", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="green"
+        >
           Green
         </button>
-        <button onClick={props.changeTargetColor} id="blue">
+        <button
+          style={{ backgroundColor: "blue", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="blue"
+        >
           Blue
         </button>
-        <button onClick={props.changeTargetColor} id="indigo">
+        <button
+          style={{ backgroundColor: "indigo", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="indigo"
+        >
           Indigo
         </button>
-        <button onClick={props.changeTargetColor} id="violet">
+        <button
+          style={{ backgroundColor: "violet", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="violet"
+        >
           Violet
         </button>
-        <button onClick={props.changeTargetColor} id="black">
+        <button
+          style={{ backgroundColor: "black", color: "white" }}
+          onClick={props.changeTargetColor}
+          id="black"
+        >
           Black
         </button>
       </div>
