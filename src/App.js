@@ -14,7 +14,7 @@ class App extends React.Component {
       currentMouseY: 0,
       clickedX: 0,
       clickedY: 0,
-      renderTarget: true,
+      renderTarget: false,
       clickCounter: 0,
       started: false,
       targetWorH: 50,
@@ -97,7 +97,7 @@ class App extends React.Component {
           this.closeSettings();
           console.log(this.state.clickCounter);
           this.test = setInterval(() => {
-            // this.changeTargetPosition();
+            this.changeTargetPosition();
             this.setState(
               {
                 renderTarget: !this.state.renderTarget,
@@ -214,7 +214,7 @@ class App extends React.Component {
       <div
         className="App"
         onMouseMove={this.handleMouseMovement}
-        onClick={this.handleMouseClick}
+        onMouseDown={this.handleMouseClick}
       >
         <button onClick={this.handleStartClick}>
           {this.state.started ? "Stop!" : "Start!"}
