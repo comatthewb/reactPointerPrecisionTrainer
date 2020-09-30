@@ -21,7 +21,7 @@ class App extends React.Component {
       targetPosition: [150, 150],
       score: 0,
       totalRenders: 0,
-      interval: 1000,
+      interval: 750,
       renderModal: false,
       color: "purple",
     };
@@ -34,6 +34,7 @@ class App extends React.Component {
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
     this.changeTargetColor = this.changeTargetColor.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
+    this.closeSettings = this.closeSettings.bind(this);
   }
 
   handleMouseMovement(event) {
@@ -93,6 +94,7 @@ class App extends React.Component {
           started: !this.state.started,
         },
         () => {
+          this.closeSettings();
           console.log(this.state.clickCounter);
           this.test = setInterval(() => {
             this.changeTargetPosition();
@@ -125,8 +127,16 @@ class App extends React.Component {
   }
 
   handleSettingsClick() {
+    if (!this.state.started) {
+      this.setState({
+        renderModal: true,
+      });
+    }
+  }
+
+  closeSettings() {
     this.setState({
-      renderModal: !this.state.renderModal,
+      renderModal: false,
     });
   }
 
@@ -236,6 +246,7 @@ class App extends React.Component {
         {this.state.renderModal ? (
           <SettingsModal
             handleSettingsClick={this.handleSettingsClick}
+            closeSettings={this.closeSettings}
             changeTargetColor={this.changeTargetColor}
             color={this.state.color}
             handleDifficultyChange={this.handleDifficultyChange}

@@ -75,6 +75,22 @@ body > #root > div {
   animation-duration: 0.4s;
 }
 
+/*  difficulty buttons  */
+
+#medium,
+#hard,
+#easy,
+#ruthless {
+  background-color: gainsboro; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 /* Add Animation */
 @keyframes animatetop {
   from {

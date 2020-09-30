@@ -4,7 +4,7 @@ export default function SettingsModal(props) {
   return (
     <div className="modal-content">
       <div className="modal-header">
-        <span className="close" onClick={props.handleSettingsClick}>
+        <span className="close" onClick={props.closeSettings}>
           &times;
         </span>
       </div>
