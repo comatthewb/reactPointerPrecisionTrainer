@@ -48,7 +48,7 @@ body > #root > div {
 /* Modal Header */
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: lightblue;
   color: white;
 }
 
@@ -60,7 +60,7 @@ body > #root > div {
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: lightblue;
   color: white;
 }
 

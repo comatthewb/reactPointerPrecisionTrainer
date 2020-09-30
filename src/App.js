@@ -21,6 +21,7 @@ class App extends React.Component {
       targetPosition: [150, 150],
       score: 0,
       totalRenders: 0,
+      renderModal: false,
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -28,6 +29,7 @@ class App extends React.Component {
     this.changeTargetPosition = this.changeTargetPosition.bind(this);
     this.handleCircleTargetClick = this.handleCircleTargetClick.bind(this);
     this.handleSquareTargetClick = this.handleSquareTargetClick.bind(this);
+    this.handleSettingsClick = this.handleSettingsClick.bind(this);
   }
 
   handleMouseMovement(event) {
@@ -61,14 +63,14 @@ class App extends React.Component {
   changeTargetPosition() {
     if (this.state.renderTarget) {
       let position = [],
-        maxH = window.innerHeight,
-        maxW = window.innerWidth;
+        maxH = window.innerHeight - this.state.targetWorH,
+        maxW = window.innerWidth - this.state.targetWorH;
 
       position[0] =
-        Math.floor(Math.random() * (maxH - this.state.targetWorH)) +
+        Math.floor(Math.random() * (maxH - this.state.targetWorH * 2)) +
         this.state.targetWorH;
       position[1] =
-        Math.floor(Math.random() * (maxW - this.state.targetWorH)) +
+        Math.floor(Math.random() * (maxW - this.state.targetWorH * 2)) +
         this.state.targetWorH;
       console.log(position);
       this.setState({ targetPosition: position });
@@ -111,6 +113,12 @@ class App extends React.Component {
       clearInterval(this.test);
       console.log("your score is " + this.state.score);
     }
+  }
+
+  handleSettingsClick() {
+    this.setState({
+      renderModal: !this.state.renderModal,
+    });
   }
 
   handleSquareTargetClick() {
@@ -170,7 +178,7 @@ class App extends React.Component {
         <button onClick={this.handleStartClick}>
           {this.state.started ? "Stop!" : "Start!"}
         </button>
-        <button> settings</button>
+        <button onClick={this.handleSettingsClick}> settings</button>
         <p>
           The current mouse position is ({this.state.currentMouseX},
           {this.state.currentMouseY})
@@ -193,7 +201,9 @@ class App extends React.Component {
           targetWorH={this.state.targetWorH}
           targetPosition={this.state.targetPosition}
         />
-        {/* <SettingsModal /> */}
+        {this.state.renderModal ? (
+          <SettingsModal handleSettingsClick={this.handleSettingsClick} />
+        ) : null}
       </div>
     );
   }
