@@ -21,7 +21,7 @@ class App extends React.Component {
       targetPosition: [150, 150],
       score: 0,
       totalRenders: 0,
-      interval: 750,
+      interval: 700,
       renderModal: false,
       color: "purple",
     };
@@ -148,17 +148,17 @@ class App extends React.Component {
     }
     if (event.target.id === "medium") {
       this.setState({
-        interval: 750,
+        interval: 700,
       });
     }
     if (event.target.id === "hard") {
       this.setState({
-        interval: 500,
+        interval: 575,
       });
     }
     if (event.target.id === "ruthless") {
       this.setState({
-        interval: 250,
+        interval: 450,
       });
     }
   }
