@@ -12,7 +12,7 @@ export default function SquareTarget(props) {
           left: props.targetPosition[1],
           backgroundColor: props.color,
         }}
-        onClick={props.handleSquareTargetClick}
+        onMouseDown={props.handleSquareTargetClick}
       ></div>
     );
   } else {

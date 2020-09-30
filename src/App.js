@@ -14,11 +14,11 @@ class App extends React.Component {
       currentMouseY: 0,
       clickedX: 0,
       clickedY: 0,
-      renderTarget: false,
+      renderTarget: true,
       clickCounter: 0,
       started: false,
       targetWorH: 50,
-      targetPosition: [150, 150],
+      targetPosition: [500, 500],
       score: 0,
       totalRenders: 0,
       interval: 700,
@@ -97,7 +97,7 @@ class App extends React.Component {
           this.closeSettings();
           console.log(this.state.clickCounter);
           this.test = setInterval(() => {
-            this.changeTargetPosition();
+            // this.changeTargetPosition();
             this.setState(
               {
                 renderTarget: !this.state.renderTarget,
