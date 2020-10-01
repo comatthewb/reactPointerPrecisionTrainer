@@ -9,6 +9,9 @@ export default function SettingsModal(props) {
         </span>
       </div>
       <div className="modal-body">
+        <p>Target Shape:</p>
+        <button onClick={props.renderSquare}>Square</button>
+        <button onClick={props.renderCircle}>Circle</button>
         <p>Number of Rounds: </p>
         <button onClick={props.handleRoundChange} id="25">
           25
@@ -35,9 +38,7 @@ export default function SettingsModal(props) {
         <button onClick={props.handleDifficultyChange} id="ruthless">
           ruthless
         </button>
-
         <p>Color: </p>
-
         <button
           className="colorButton"
           onClick={props.changeTargetColor}

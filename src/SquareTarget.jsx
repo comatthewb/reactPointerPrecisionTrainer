@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function SquareTarget(props) {
-  if (props.renderTarget) {
+  if (props.renderTarget && props.renderSquare) {
     return (
       <div
         className={`squareTarget-${props.color}`}

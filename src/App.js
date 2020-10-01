@@ -15,6 +15,8 @@ class App extends React.Component {
       clickedX: 0,
       clickedY: 0,
       renderTarget: false,
+      renderSquare: true,
+      renderCircle: false,
       clickCounter: 0,
       started: false,
       targetWorH: 50,
@@ -31,13 +33,15 @@ class App extends React.Component {
     this.handleStartClick = this.handleStartClick.bind(this);
     this.changeTargetPosition = this.changeTargetPosition.bind(this);
     this.handleCircleTargetClick = this.handleCircleTargetClick.bind(this);
-    this.handleSquareTargetClick = this.handleSquareTargetClick.bind(this);
+    this.handleTargetClick = this.handleTargetClick.bind(this);
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
     this.changeTargetColor = this.changeTargetColor.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
     this.closeSettings = this.closeSettings.bind(this);
     this.handleRoundChange = this.handleRoundChange.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.renderSquare = this.renderSquare.bind(this);
+    this.renderCircle = this.renderCircle.bind(this);
   }
 
   handleMouseMovement(event) {
@@ -183,7 +187,20 @@ class App extends React.Component {
     this.setState({ rounds: rounds });
   }
 
-  handleSquareTargetClick() {
+  renderCircle() {
+    this.setState({
+      renderCircle: true,
+      renderSquare: false,
+    });
+  }
+
+  renderSquare() {
+    this.setState({
+      renderCircle: false,
+      renderSquare: true,
+    });
+  }
+  handleTargetClick() {
     let score = this.state.score;
     score++;
     this.setState({ score: score }, () => {
@@ -252,17 +269,21 @@ class App extends React.Component {
           totalRenders={this.state.totalRenders}
           Score={this.state.score}
         />
-        {/* <CircleTarget
-          renderTarget={this.state.renderTarget}
-          targetWorH={this.state.targetWorH}
-          targetPosition={this.state.targetPosition}
-        /> */}
-        <SquareTarget
-          handleSquareTargetClick={this.handleSquareTargetClick}
+        <CircleTarget
+          handleCircleTargetClick={this.handleTargetClick}
           renderTarget={this.state.renderTarget}
           targetWorH={this.state.targetWorH}
           targetPosition={this.state.targetPosition}
           color={this.state.color}
+          renderCircle={this.state.renderCircle}
+        />
+        <SquareTarget
+          handleSquareTargetClick={this.handleTargetClick}
+          renderTarget={this.state.renderTarget}
+          targetWorH={this.state.targetWorH}
+          targetPosition={this.state.targetPosition}
+          color={this.state.color}
+          renderSquare={this.state.renderSquare}
         />
         {this.state.renderModal ? (
           <SettingsModal
@@ -272,6 +293,8 @@ class App extends React.Component {
             color={this.state.color}
             handleDifficultyChange={this.handleDifficultyChange}
             handleRoundChange={this.handleRoundChange}
+            renderSquare={this.renderSquare}
+            renderCircle={this.renderCircle}
           />
         ) : null}
       </div>
