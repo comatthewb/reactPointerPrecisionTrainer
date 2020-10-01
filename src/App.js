@@ -27,6 +27,7 @@ class App extends React.Component {
       renderModal: false,
       color: "purple",
       rounds: 25,
+      difficulty: "medium",
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -165,21 +166,25 @@ class App extends React.Component {
     if (event.target.id === "easy") {
       this.setState({
         interval: 1000,
+        difficulty: event.target.id,
       });
     }
     if (event.target.id === "medium") {
       this.setState({
         interval: 700,
+        difficulty: event.target.id,
       });
     }
     if (event.target.id === "hard") {
       this.setState({
         interval: 550,
+        difficulty: event.target.id,
       });
     }
     if (event.target.id === "ruthless") {
       this.setState({
         interval: 420,
+        difficulty: event.target.id,
       });
     }
   }
@@ -308,9 +313,14 @@ class App extends React.Component {
             color={this.state.color}
             handleDifficultyChange={this.handleDifficultyChange}
             handleRoundChange={this.handleRoundChange}
+            isSquareRendering={this.state.renderSquare}
+            isCircleRendering={this.state.renderCircle}
             renderSquare={this.renderSquare}
             renderCircle={this.renderCircle}
+            targetSize={this.state.targetWorH}
             targetSizeSubmitClickHandler={this.targetSizeSubmitClickHandler}
+            roundCount={this.state.rounds}
+            difficulty={this.state.difficulty}
           />
         ) : null}
       </div>

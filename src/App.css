@@ -216,3 +216,8 @@ button {
     opacity: 1;
   }
 }
+
+#target-size-input {
+  width: 10%;
+  padding: 2%;
+}

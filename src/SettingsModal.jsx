@@ -9,17 +9,23 @@ export default function SettingsModal(props) {
         </span>
       </div>
       <div className="modal-body">
-        <input id="target-size-input"></input>
+        <p>
+          Target Size: {props.targetSize} by {props.targetSize}px
+        </p>
+        <input id="target-size-input" placeholder="ex:25"></input>
         <button
           id="target-size-submit"
           onClick={props.targetSizeSubmitClickHandler}
         >
           submit
         </button>
-        <p>Target Shape:</p>
+        <p>
+          Target Shape: {props.isSquareRendering ? "Square" : null}
+          {props.isCircleRendering ? "Circle" : null}
+        </p>
         <button onClick={props.renderSquare}>Square</button>
         <button onClick={props.renderCircle}>Circle</button>
-        <p>Number of Rounds: </p>
+        <p>Number of Rounds: {props.roundCount}</p>
         <button onClick={props.handleRoundChange} id="25">
           25
         </button>
@@ -32,7 +38,7 @@ export default function SettingsModal(props) {
         <button onClick={props.handleRoundChange} id="200">
           200
         </button>
-        <p>Difficulty: </p>
+        <p>Difficulty: {props.difficulty}</p>
         <button onClick={props.handleDifficultyChange} id="easy">
           easy
         </button>
@@ -45,7 +51,7 @@ export default function SettingsModal(props) {
         <button onClick={props.handleDifficultyChange} id="ruthless">
           ruthless
         </button>
-        <p>Color: </p>
+        <p>Color: {props.color}</p>
         <button
           className="colorButton"
           onClick={props.changeTargetColor}
