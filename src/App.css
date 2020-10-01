@@ -2,6 +2,7 @@ body > #root > div {
   height: 95vh;
   text-align: center;
   cursor: crosshair;
+  background-color: lightgrey;
 }
 
 .circleTarget {
