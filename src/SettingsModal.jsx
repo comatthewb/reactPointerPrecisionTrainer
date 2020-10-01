@@ -9,6 +9,13 @@ export default function SettingsModal(props) {
         </span>
       </div>
       <div className="modal-body">
+        <input id="target-size-input"></input>
+        <button
+          id="target-size-submit"
+          onClick={props.targetSizeSubmitClickHandler}
+        >
+          submit
+        </button>
         <p>Target Shape:</p>
         <button onClick={props.renderSquare}>Square</button>
         <button onClick={props.renderCircle}>Circle</button>

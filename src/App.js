@@ -42,6 +42,9 @@ class App extends React.Component {
     this.endGame = this.endGame.bind(this);
     this.renderSquare = this.renderSquare.bind(this);
     this.renderCircle = this.renderCircle.bind(this);
+    this.targetSizeSubmitClickHandler = this.targetSizeSubmitClickHandler.bind(
+      this
+    );
   }
 
   handleMouseMovement(event) {
@@ -171,12 +174,12 @@ class App extends React.Component {
     }
     if (event.target.id === "hard") {
       this.setState({
-        interval: 575,
+        interval: 550,
       });
     }
     if (event.target.id === "ruthless") {
       this.setState({
-        interval: 450,
+        interval: 420,
       });
     }
   }
@@ -246,6 +249,18 @@ class App extends React.Component {
     }
   }
 
+  targetSizeSubmitClickHandler(event) {
+    event.preventDefault();
+    let targetSizeInputValue = parseInt(
+      document.getElementById("target-size-input").value
+    );
+    if (targetSizeInputValue >= 0) {
+      this.setState({
+        targetWorH: targetSizeInputValue,
+      });
+    }
+  }
+
   render() {
     return (
       <div
@@ -295,6 +310,7 @@ class App extends React.Component {
             handleRoundChange={this.handleRoundChange}
             renderSquare={this.renderSquare}
             renderCircle={this.renderCircle}
+            targetSizeSubmitClickHandler={this.targetSizeSubmitClickHandler}
           />
         ) : null}
       </div>

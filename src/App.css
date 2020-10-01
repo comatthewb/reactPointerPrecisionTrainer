@@ -2,6 +2,8 @@ body > #root > div {
   height: 95vh;
   text-align: center;
   cursor: crosshair;
+}
+html {
   background-color: lightgrey;
 }
 
