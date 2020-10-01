@@ -90,9 +90,9 @@ export default function SettingsModal(props) {
         <button
           className="colorButton"
           onClick={props.changeTargetColor}
-          id="black"
+          id="lightblue"
         >
-          Black
+          Light Blue
         </button>
       </div>
       <div className="modal-footer">

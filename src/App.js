@@ -87,7 +87,7 @@ class App extends React.Component {
   }
 
   changeTargetPosition() {
-    if (!this.state.renderTarget) {
+    if (this.state.renderTarget) {
       let position = [],
         maxH = window.innerHeight - this.state.targetWorH,
         maxW = window.innerWidth - this.state.targetWorH;

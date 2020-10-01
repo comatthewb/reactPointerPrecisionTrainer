@@ -1,6 +1,8 @@
 body > #root > div {
   height: 95vh;
   text-align: center;
+  cursor: url(https://tr.rbxcdn.com/402acce34fa4751ee9f0ae51437c2033/420/420/Decal/Png),
+    url(cursor.png), crosshair;
 }
 
 .circleTarget {
@@ -64,6 +66,7 @@ body > #root > div {
 
 /* Modal Content */
 .modal-content {
+  cursor: auto;
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -102,7 +105,7 @@ button {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  outline: 1px silver;
+  background-color: grey;
   border-radius: 5%;
 }
 
@@ -112,7 +115,8 @@ button {
   border: 2px solid orange;
 }
 
-#orange:hover {
+#orange:hover,
+#orange:visited {
   background-color: orange;
   color: white;
 }
@@ -123,7 +127,8 @@ button {
   border: 2px solid #f44336;
 }
 
-#red:hover {
+#red:hover,
+#red:visited {
   background-color: #f44336;
   color: white;
 }
@@ -134,7 +139,8 @@ button {
   border: 2px solid yellow;
 }
 
-#yellow:hover {
+#yellow:hover,
+#yellow:visited {
   background-color: yellow;
 }
 
@@ -144,7 +150,8 @@ button {
   border: 2px solid green;
 }
 
-#green:hover {
+#green:hover,
+#green:visited {
   background-color: green;
   color: white;
 }
@@ -155,7 +162,8 @@ button {
   border: 2px solid blue;
 }
 
-#blue:hover {
+#blue:hover,
+#blue:visited {
   background-color: blue;
   color: white;
 }
@@ -166,7 +174,8 @@ button {
   border: 2px solid indigo;
 }
 
-#indigo:hover {
+#indigo:hover,
+#indigo:visited {
   background-color: indigo;
   color: white;
 }
@@ -177,19 +186,21 @@ button {
   border: 2px solid violet;
 }
 
-#violet:hover {
+#violet:hover,
+#violet:visited {
   background-color: violet;
   color: white;
 }
 
-#black {
+#lightblue {
   background-color: white;
   color: black;
-  border: 2px solid black;
+  border: 2px solid lightblue;
 }
 
-#black:hover {
-  background-color: black;
+#lightblue:hover,
+#lightblue:visited {
+  background-color: lightblue;
   color: white;
 }
 /* Add Animation */
