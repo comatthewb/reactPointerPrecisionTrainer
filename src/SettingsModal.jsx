@@ -39,56 +39,56 @@ export default function SettingsModal(props) {
         <p>Color: </p>
 
         <button
-          style={{ backgroundColor: "red", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="red"
         >
           Red
         </button>
         <button
-          style={{ backgroundColor: "orange", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="orange"
         >
           Orange
         </button>
         <button
-          style={{ backgroundColor: "yellow", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="yellow"
         >
           Yellow
         </button>
         <button
-          style={{ backgroundColor: "green", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="green"
         >
           Green
         </button>
         <button
-          style={{ backgroundColor: "blue", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="blue"
         >
           Blue
         </button>
         <button
-          style={{ backgroundColor: "indigo", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="indigo"
         >
           Indigo
         </button>
         <button
-          style={{ backgroundColor: "violet", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="violet"
         >
           Violet
         </button>
         <button
-          style={{ backgroundColor: "black", color: "white" }}
+          className="colorButton"
           onClick={props.changeTargetColor}
           id="black"
         >

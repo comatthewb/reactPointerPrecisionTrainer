@@ -87,7 +87,7 @@ class App extends React.Component {
   }
 
   changeTargetPosition() {
-    if (this.state.renderTarget) {
+    if (!this.state.renderTarget) {
       let position = [],
         maxH = window.innerHeight - this.state.targetWorH,
         maxW = window.innerWidth - this.state.targetWorH;
@@ -243,7 +243,7 @@ class App extends React.Component {
         <button onClick={this.handleStartClick}>
           {this.state.started ? "Stop!" : "Start!"}
         </button>
-        <button onClick={this.handleSettingsClick}> settings</button>
+        <button onClick={this.handleSettingsClick}>Settings</button>
         <p>
           The current mouse position is ({this.state.currentMouseX},
           {this.state.currentMouseY})
