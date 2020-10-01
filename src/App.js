@@ -26,7 +26,7 @@ class App extends React.Component {
       interval: 700,
       renderModal: false,
       color: "purple",
-      rounds: 5,
+      rounds: 25,
     };
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
