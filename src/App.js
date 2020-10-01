@@ -50,10 +50,7 @@ class App extends React.Component {
   endGame() {
     this.setState({
       started: false,
-      clickCounter: 0,
       renderTarget: false,
-      score: 0,
-      totalRenders: 0,
     });
     //clear target rendering interval
     clearInterval(this.targetRenderer);
@@ -73,7 +70,6 @@ class App extends React.Component {
       this.setState({
         clickedX: this.state.currentMouseX,
         clickedY: this.state.currentMouseY,
-        clickCounter: 0,
       });
     }
   }
@@ -107,7 +103,7 @@ class App extends React.Component {
     if (!this.state.started) {
       this.setState(
         {
-          started: !this.state.started,
+          started: true,
           clickCounter: 0,
           score: 0,
           totalRenders: 0,
@@ -161,7 +157,7 @@ class App extends React.Component {
   handleDifficultyChange(event) {
     if (event.target.id === "easy") {
       this.setState({
-        interval: 1500,
+        interval: 1000,
       });
     }
     if (event.target.id === "medium") {

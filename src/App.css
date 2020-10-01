@@ -1,8 +1,7 @@
 body > #root > div {
   height: 95vh;
   text-align: center;
-  cursor: url(https://tr.rbxcdn.com/402acce34fa4751ee9f0ae51437c2033/420/420/Decal/Png),
-    url(cursor.png), crosshair;
+  cursor: crosshair;
 }
 
 .circleTarget {
