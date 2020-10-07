@@ -74,7 +74,7 @@ html {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 30%;
+  width: 35%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -92,23 +92,28 @@ html {
   padding: 15px 24px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   font-size: 16px;
 }
 
 button {
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 15px 24px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   font-size: 16px;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
   background-color: grey;
   border-radius: 5%;
+}
+
+#color-button-container {
+  display: inline-block;
+  align-content: flex-end;
 }
 
 #orange {

@@ -153,6 +153,14 @@ class App extends React.Component {
       this.setState({
         renderModal: true,
       });
+    } else if (this.state.started) {
+      this.setState(
+        {
+          renderModal: true,
+          started: false,
+        },
+        this.endGame()
+      );
     }
   }
 
